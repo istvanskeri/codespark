@@ -1,10 +1,9 @@
 var mongoose = require('mongoose')
-
 var User = require('./models/user')
 var Test = require('./models/test')
-var Score = require('./models/score')
-const fs = require('fs')
 var csv = require("csv-parse")
+
+const fs = require('fs')
 const users = []
 const scores = []
 let tests
@@ -49,19 +48,25 @@ mongoose.connect('mongodb://localhost/codespark', function (err) {
     const result = []
     let total = 0
     for (let i = 1; i <= tests.length; i++) {
+      console.log(dates);
       if (scores[j][i]) {
-        result.push({ test: tests[i-1], score: parseInt(scores[j][i]) })
+        result.push({ 
+          test: tests[i-1], 
+          date: dates[i], 
+          score: parseInt(scores[j][i]) 
+        })
         total += parseInt(scores[j][i])
       } else {
-        result.push({ test: tests[i] })
+       result.push({ test: tests[i-1], date: dates[i] })
       }
     }
+    console.log(result);
     var user = new User({
       _id: new mongoose.Types.ObjectId(),
       firstname: u[1],
       lastname: u[2],
       scores: result,
-      average: total / tests.length
+      average: Math.floor(total / tests.length)
     })
     j++
     await user.save()
@@ -72,7 +77,6 @@ mongoose.connect('mongodb://localhost/codespark', function (err) {
     var test = new Test({
       _id: new mongoose.Types.ObjectId(),
       name: t,
-      date: dates[j]
     })
     await test.save()
     j++

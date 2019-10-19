@@ -7,8 +7,9 @@ var userSchema = new Schema({
   average: { type: Number },
   scores: [
     {
-      test: { type: String },
-      score: { type: Number }
+      test: { type: String, required: true },
+      date: { type: Date, required: true },
+      score: { type: Number, required: false }
     }
   ]
 })

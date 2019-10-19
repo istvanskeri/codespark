@@ -1,0 +1,60 @@
+.bordertop{
+  border-top: 1px solid #e6e1de;
+}
+.averages {
+  padding: 30px;
+}
+.blue-text {
+  color: #2d7afe;
+}
+.grey-text {
+  color: #a2a19f;
+}
+.table { border-collapse: collapse; width: 50%; margin-left: auto; margin-right: auto }
+  .table td, .table th {
+    padding: 0px;
+    margin: 0px;
+  }
+  .table .clearcol {
+    padding: 17px 20px 15px 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #26c132;
+  }
+  .table .whitecol {
+    background-color: white;
+    padding: 17px 20px 15px 20px;
+    margin: 0px 5px 0px 5px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #26c132;
+    height: 30px;
+  }
+  .table .whitecol-header{
+    background-color: white;
+    padding: 17px 20px 15px 20px;
+    margin: 0px 5px 0px 5px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #26c132;
+    height: 30px;
+    border-top-left-radius:10%;
+    border-top-right-radius:10%;
+  }
+  .table .vertical {
+    writing-mode: vertical-rl;
+    transform: rotate(-170deg);
+    height: 150px;
+    width: 20px !important;
+    /*white-space: nowrap;*/
+  }
+  .table .user-name {
+    font-weight: bold;
+    font-size: 1.1em;
+  }
+
+.pagebody {
+  background-color: #f6f5f2;
+  margin-right: 5%;
+  margin-left: 5%;
+}

@@ -17,7 +17,7 @@ function App() {
             </header>
           )}
         </Sticky>
-        <div>
+        <div class='pagebody'>
           <ScoresComponent value="hello"/>
           <img src={logo} className="App-logo" alt="logo" />
         </div>
