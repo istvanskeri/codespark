@@ -1,8 +1,9 @@
 import React from 'react';
-import logo from './logo.svg';
 import { StickyContainer, Sticky } from 'react-sticky';
 import ScoresComponent from '../src/components/scores'
+import './fonts/bariol_regular-webfont.ttf'
 import './App.css';
+import logo from './images/codespark.png';
 
 function App() {
   return (
@@ -12,14 +13,13 @@ function App() {
           {({
             style
           }) => (
-            <header style={style}>
-              this is the header
+            <header className='header' style={style}>
+              <img src={logo} alt="logo" />
             </header>
           )}
         </Sticky>
         <div class='pagebody'>
-          <ScoresComponent value="hello"/>
-          <img src={logo} className="App-logo" alt="logo" />
+          <ScoresComponent/>
         </div>
       </StickyContainer>
     </div>

@@ -1,3 +1,35 @@
+@font-face {
+  font-family: 'bariolregular';
+  src: url('../fonts/bariol_regular-webfont.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+body{ 
+  background: rgb(41,103,254);
+  background: linear-gradient(0deg, rgba(41,103,254,1) 0%, rgba(57,183,255,1) 100%);
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.header {
+  background: #f6f5f2;
+  padding: 20px 0px 20px 20px;
+  height: 50px;
+  z-index: 100;
+  text-align: left;
+  border-bottom: 8px solid #244efe;
+}
+
+.pagebody {
+  background-color: #f6f5f2;
+  margin-right: 5%;
+  margin-left: 5%;
+  font-family: "bariolregular";
+  margin-top: 20px;
+}
+
 .bordertop{
   border-top: 1px solid #e6e1de;
 }
@@ -10,7 +42,7 @@
 .grey-text {
   color: #a2a19f;
 }
-.table { border-collapse: collapse; width: 50%; margin-left: auto; margin-right: auto }
+.table { border-collapse: collapse; margin-left: auto; margin-right: auto; font-weight: bold }
   .table td, .table th {
     padding: 0px;
     margin: 0px;
@@ -43,7 +75,7 @@
   }
   .table .vertical {
     writing-mode: vertical-rl;
-    transform: rotate(-170deg);
+    transform: rotate(-150deg);
     height: 150px;
     width: 20px !important;
     /*white-space: nowrap;*/
@@ -57,4 +89,30 @@
   background-color: #f6f5f2;
   margin-right: 5%;
   margin-left: 5%;
+}
+
+
+@media 
+only screen and (max-width: 1200px) {
+  .full {display:none}
+  table{width: 100%;}
+  table tr:first-child div {
+    margin-top: 0px !important;
+  }
+  .responsive-header {
+    background: white;
+    margin-top: 20px;
+    padding: 17px 20px 15px 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #26c132;
+    height: 30px;
+  }
+  .whitecol-header {
+    margin-top: 30px !important;
+    font-size: 1.3em !important;
+  }
+  .whitecol {
+    font-size: 1.3em !important;
+  }
 }
