@@ -119,7 +119,7 @@ const ScoresComponent =  (props) => {
                 <div className='blue-text whitecol-header'>Score</div>
               </td>
               <td>
-                <div className='blue-text whitecol-header'>Class Avg</div>
+                <div className='blue-text whitecol-header'>Avg</div>
               </td>
             </tr>
           {
