@@ -1,11 +1,11 @@
-Codespark Take Home Test
+### Codespark Take Home Test
 
 Code on AWS EC2 Instance using Mongo Atlas database
 
 http://ec2-52-53-148-160.us-west-1.compute.amazonaws.com:3000/
 
 
-Installation
+#### Installation
 
 1. git clone https://github.com/istvanskeri/codespark.git
 
