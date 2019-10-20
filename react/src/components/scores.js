@@ -164,7 +164,7 @@ const ScoresComponent =  (props) => {
   }
 
   return (
-    <div>
+    <div className='table-container'>
        <table className='table full'>
           <tbody>
              <tr>
@@ -181,9 +181,12 @@ const ScoresComponent =  (props) => {
           </tbody>
        </table>
 
-       <table className='table'>
+       <table className='table responsive'>
+        <tbody>
           {renderTableResponsive(data, header)}
+        </tbody>
        </table>
+       
     </div>
   );
 }

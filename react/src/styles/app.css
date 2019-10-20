@@ -30,6 +30,10 @@ body{
   margin-top: 20px;
 }
 
+.table-container {
+  padding-bottom: 30px;
+}
+
 .bordertop{
   border-top: 1px solid #e6e1de;
 }
@@ -90,11 +94,13 @@ body{
   margin-right: 5%;
   margin-left: 5%;
 }
+.responsive {display:none;}
 
 
 @media 
 only screen and (max-width: 1200px) {
   .full {display:none}
+  .responsive {display:table}
   table{width: 100%;}
   table tr:first-child div {
     margin-top: 0px !important;
