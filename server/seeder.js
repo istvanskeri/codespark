@@ -1,3 +1,4 @@
+require('dotenv').config()
 var mongoose = require('mongoose')
 var User = require('./models/user')
 var Test = require('./models/test')
@@ -48,7 +49,6 @@ mongoose.connect(process.env.MONGO, function (err) {
     const result = []
     let total = 0
     for (let i = 1; i <= tests.length; i++) {
-      console.log(dates);
       if (scores[j][i]) {
         result.push({ 
           test: tests[i-1], 
@@ -60,7 +60,6 @@ mongoose.connect(process.env.MONGO, function (err) {
        result.push({ test: tests[i-1], date: dates[i] })
       }
     }
-    console.log(result);
     var user = new User({
       _id: new mongoose.Types.ObjectId(),
       firstname: u[1],

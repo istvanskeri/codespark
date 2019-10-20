@@ -21,7 +21,7 @@ const useFetch = url => {
 };
 
 const ScoresComponent =  (props) => {
-  const [ data, header ] = useFetch("http://ec2-52-53-148-160.us-west-1.compute.amazonaws.com:3000/users")
+  const [ data, header ] = useFetch("http://localhost:3000/users")
 
   const renderTableHeader = (header) => {
     if (!header) {
