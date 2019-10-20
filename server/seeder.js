@@ -39,7 +39,7 @@ fs.createReadStream('grades.csv')
 User.collection.drop()
 Test.collection.drop()
 
-mongoose.connect('mongodb://localhost/codespark', function (err) {
+mongoose.connect(process.env.MONGO, function (err) {
   if (err) throw err
   tests.shift()
   users.shift()
