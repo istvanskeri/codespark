@@ -149,7 +149,7 @@ const ScoresComponent =  (props) => {
                     <div  className='whitecol'>
                       {avg[index]}
                       {
-                        value.score >= 0 && <span>%</span>
+                        avg[index] >= 0 && <span>%</span>
                       }
                     </div>
                   </td>
