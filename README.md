@@ -14,8 +14,8 @@ Installation
 3. Issue yarn build command in /react directory to build our react app
 
 3. Create .env file in /server directory and add the following
-
-  ⋅⋅* MONGO=mongodb://localhost/codespark
+    
+    MONGO=mongodb://localhost/codespark
 
 4. Run the seeder file in the /server folder with node seeder.js command. This will populate your db collection from csv files. 
 
