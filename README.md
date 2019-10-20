@@ -7,9 +7,7 @@ http://ec2-52-53-148-160.us-west-1.compute.amazonaws.com:3000/
 
 Installation
 
-1. Clone the repo
-
-git clone https://github.com/istvanskeri/codespark.git
+1. git clone https://github.com/istvanskeri/codespark.git
 
 2. Run npm install on both /server  and /react directories
 
@@ -17,7 +15,7 @@ git clone https://github.com/istvanskeri/codespark.git
 
 3. Create .env file in /server directory and add the following
 
-MONGO=mongodb://localhost/codespark
+  ⋅⋅* MONGO=mongodb://localhost/codespark
 
 4. Run the seeder file in the /server folder with node seeder.js command. This will populate your db collection from csv files. 
 
