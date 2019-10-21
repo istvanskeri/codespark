@@ -20,3 +20,4 @@ http://ec2-52-53-148-160.us-west-1.compute.amazonaws.com:3000/
 4. Run the seeder file in the /server folder with node seeder.js command. This will populate your db collection from csv files. 
 
 5. Start the node server with npm start
+6. Navigate to http://localhost:3000/
