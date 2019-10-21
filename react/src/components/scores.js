@@ -20,108 +20,89 @@ const useFetch = url => {
   return [data, header];
 };
 
-const ScoresComponent =  (props) => {
-  const [ data, header ] = useFetch("http://localhost:3000/users")
+const renderTableHeader = (header) => {
+  return header.map((key, index) => {
+     return (
+      <th key={index}>
+        <span className='vertical'>
+          <span className='blue-text'>{key.test}</span><br></br>
+          <span className='grey-text'>{moment(key.date).format("MMMM D")}</span>
+        </span>
+      </th>
+     )
+  })
+}
 
-  const renderTableHeader = (header) => {
-    if (!header) {
-      return
+const getClassAvg = (header,data) => {
+  let avg = [];
+  for(let i = 0; i<header.length; i++) {
+    let total = 0;
+    for(let j = 0; j<data.length; j++) {
+      if(data[j].scores[i].score)
+        total = total + data[j].scores[i].score;
     }
-    return header.map((key, index) => {
-       return (
-        <th key={index}>
-          <span className='vertical'>
-            <span className='blue-text'>{key.test}</span><br></br>
-            <span className='grey-text'>{moment(key.date).format("MMMM D")}</span>
-          </span>
-        </th>
-       )
+    avg.push(Math.floor(total/data.length));
+  }
+  return avg;
+}
+
+const renderSum = (data,header) => {
+  const avg = getClassAvg(header, data);
+  return avg.map((classAverage) => {
+     return <th className='clear'><div className='whitecol-header'>{classAverage}%</div></th>
+  })
+}
+const renderTableRow = (data) => {
+    return data.map((student, index) => {
+      return (
+        <tr className='bordertop'>
+            <td className='user-name'><div className='blue-text'>{student.firstname}</div><div className='grey-text'>{student.lastname}</div></td>
+            <td className='clearcol border-right'>{student.average}%</td>
+            {
+              student.scores.map((value, index) => {
+                return (
+                  <td testdate={moment(value.date).format("MMMM D")} headers={value.test}>
+                    <div className='whitecol'>
+                      {value.score }
+                      {
+                        value.score == null && <span>-</span>
+                      }
+                      {
+                        value.score >= 0 && <span>%</span>
+                      }
+                    </div>
+                  </td> 
+                )
+              })
+            }
+        </tr>
+      )
     })
-  }
-
-  const getClassAvg = (header,data) => {
-    let avg = [];
-    for(let i = 0; i<header.length; i++) {
-      let total = 0;
-      for(let j = 0; j<data.length; j++) {
-        if(data[j].scores[i].score)
-          total = total + data[j].scores[i].score;
-      }
-      avg.push(Math.floor(total/data.length));
-    }
-    return avg;
-  }
-
-  const renderSum = (data,header) => {
-    if (!data || !header) {
-      return
-    }
-    const avg = getClassAvg(header, data);
-
-    return avg.map((classAverage) => {
-       return <th className='clear'><div className='whitecol-header'>{classAverage}%</div></th>
-    })
-  }
-  const renderTableRow = (data) => {
-    if (!data) {
-      return
-    }
-    else {
-      return data.map((student, index) => {
-        return (
-          <tr className='bordertop'>
-              <td className='user-name'><div className='blue-text'>{student.firstname}</div><div className='grey-text'>{student.lastname}</div></td>
-              <td className='clearcol border-right'>{student.average}%</td>
-              {
-                student.scores.map((value, index) => {
-                  return (
-                    <td testdate={moment(value.date).format("MMMM D")} headers={value.test}>
-                      <div className='whitecol'>
-                        {value.score }
-                        {
-                          value.score == null && <span>-</span>
-                        }
-                        {
-                          value.score >= 0 && <span>%</span>
-                        }
-                      </div>
-                    </td> 
-                  )
-                })
-              }
+}
+const renderTableResponsive = (data,header) => {
+   const avg = getClassAvg(header,data);
+    return data.map((student, index) => {
+      return (
+        <>
+          <tr className='user-name'>
+            <td>
+              <div className='blue-text responsive-header'>{student.firstname} {student.lastname}</div>
+            </td>
+            <td colspan="2">
+              <div className='blue-text responsive-header'>{student.average}%</div>
+            </td>
           </tr>
-        )
-      })
-    }
-  }
-  const renderTableResponsive = (data,header) => {
-    if (!data || !header) {
-      return
-    }
-    else {
-     const avg = getClassAvg(header,data);
-      return data.map((student, index) => {
-        return (
-          <>
-            <tr className='user-name'>
-              <td>
-                <div className='blue-text responsive-header'>{student.firstname} {student.lastname}</div>
-              </td>
-              <td colspan="2">
-                <div className='blue-text responsive-header'>{student.average}%</div>
-              </td>
-            </tr>
-            <tr className='score'>
-              <td>
-                <div className='blue-text'></div>
-              </td>
-              <td>
-                <div className='blue-text whitecol-header'>Score</div>
-              </td>
-              <td>
-                <div className='blue-text whitecol-header'>Avg</div>
-              </td>
-            </tr>
+          <tr className='score'>
+            <td>
+              <div className='blue-text'></div>
+            </td>
+            <td>
+              <div className='blue-text whitecol-header'>Score</div>
+            </td>
+            <td>
+              <div className='blue-text whitecol-header'>Avg</div>
+            </td>
+          </tr>
           {
             student.scores.map((value, index) => {
               return (
@@ -157,11 +138,13 @@ const ScoresComponent =  (props) => {
               )
             })
           }
-          </>
-        )
-      })
-    }
-  }
+        </>
+      )
+    })
+}
+
+const ScoresComponent =  (props) => {
+  const [ data, header ] = useFetch("http://localhost:3000/users")
 
   return (
     <div className='table-container'>
@@ -170,20 +153,20 @@ const ScoresComponent =  (props) => {
              <tr>
                <th></th>
                <th className='border-right'></th>
-               {renderTableHeader(header)}
+               {header && renderTableHeader(header)}
             </tr>
             <tr>
                <th></th>
                <th className='border-right'></th>
-               {renderSum(data, header)}
+               {data && header && renderSum(data, header)}
             </tr>
-            {renderTableRow(data)}
+            {data && renderTableRow(data)}
           </tbody>
        </table>
 
        <table className='table responsive'>
         <tbody>
-          {renderTableResponsive(data, header)}
+          { data && header && renderTableResponsive(data, header)}
         </tbody>
        </table>
        
