@@ -71,7 +71,7 @@ const ScoresComponent =  (props) => {
         return (
           <tr className='bordertop'>
               <td className='user-name'><div className='blue-text'>{student.firstname}</div><div className='grey-text'>{student.lastname}</div></td>
-              <td className='clearcol'>{student.average}%</td>
+              <td className='clearcol border-right'>{student.average}%</td>
               {
                 student.scores.map((value, index) => {
                   return (
@@ -169,12 +169,12 @@ const ScoresComponent =  (props) => {
           <tbody>
              <tr>
                <th></th>
-               <th></th>
+               <th className='border-right'></th>
                {renderTableHeader(header)}
             </tr>
             <tr>
                <th></th>
-               <th></th>
+               <th className='border-right'></th>
                {renderSum(data, header)}
             </tr>
             {renderTableRow(data)}
