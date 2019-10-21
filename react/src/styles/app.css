@@ -12,7 +12,9 @@ body{
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
-
+.error {
+  color: #F00;
+}
 .header {
   background: #f6f5f2;
   padding: 20px 0px 20px 20px;

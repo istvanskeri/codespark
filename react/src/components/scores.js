@@ -5,19 +5,25 @@ import '../styles/app.css'
 const useFetch = url => {
   const [data, setData] = useState(null);
   const [header, setHeader] = useState(null);
+  const [error, setError] = useState(null);
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch(url);
-      const json = await response.json();
-      setData(json);
-      var filtered = json.map( (a) => {
-        return a.scores
-      });
-      setHeader(filtered[0]);
+      try {
+        const response = await fetch(url);
+        const json = await response.json();
+        setData(json);
+        var filtered = json.map( (a) => {
+          return a.scores
+        });
+        setHeader(filtered[0]);
+      }
+      catch(err) {
+        setError(`API Error: Cannot get result from ${url}`)
+      }
     }
     fetchData()
   },[url]);
-  return [data, header];
+  return [data, header, error];
 };
 
 const renderTableHeader = (header) => {
@@ -144,10 +150,13 @@ const renderTableResponsive = (data,header) => {
 }
 
 const ScoresComponent =  (props) => {
-  const [ data, header ] = useFetch("http://localhost:3000/users")
+  const [ data, header, error ] = useFetch("http://localhost:3000/users")
 
   return (
     <div className='table-container'>
+      { 
+        error && <div className='error'>{error} </div>
+      }
        <table className='table full'>
           <tbody>
              <tr>
@@ -169,7 +178,6 @@ const ScoresComponent =  (props) => {
           { data && header && renderTableResponsive(data, header)}
         </tbody>
        </table>
-       
     </div>
   );
 }
